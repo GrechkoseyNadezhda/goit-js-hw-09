@@ -33,14 +33,20 @@ function startTimer(deltaTime) {
   startBtn.addEventListener('click', () => {
     startBtn.disabled = true;
     input.disabled = true;
-    setInterval(() => {
+    const intervalId = setInterval(() => {
       deltaTime -= 1000;
+      if (deltaTime <= 0) {
+        clearInterval(intervalId);
+        return;
+      }
       const convertTime = convertMs(deltaTime);
+
       const convertTimeArray = Object.entries(convertTime);
       convertTimeArray.forEach((el, index) => {
         const [, value] = el;
         pageValue[index].textContent = value;
       });
+      console.log(deltaTime);
     }, 1000);
   });
 }
