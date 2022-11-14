@@ -46,7 +46,6 @@ function startTimer(deltaTime) {
         const [, value] = el;
         pageValue[index].textContent = value;
       });
-      console.log(deltaTime);
     }, 1000);
   });
 }
